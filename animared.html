@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+        ul,li{
+        	list-style: none;
+        }
+        ul li{
+        	width: 200px;
+        	height: 100px;
+        	background: yellow;
+        	margin-bottom: 20px;
+        } 
+	</style>
+	<script type="text/javascript">
+         window.onload=function(){
+            var ul0=document.getElementsByTagName('ul')[0];
+            var li0=ul0.getElementsByTagName('li');
+            for(var i=0;i<li0.length;i++){
+                li0[i].timer=null;
+            	li0[i].onmouseover=function(){
+            		changeWidth(this,400);
+            	}
+            	li0[i].onmouseout=function(){
+            		changeWidth(this,200);
+            	}
+            }
+             //var  timer=null;
+             function changeWidth(obj,num){
+                clearInterval(obj.timer);
+                obj.timer=setInterval(function(){
+                var speed=0;
+                speed=(num-obj.offsetWidth)/8;
+                speed=speed>0?Math.ceil(speed):Math.floor(speed);
+
+                 if (obj.offsetWidth==num) {
+                 	clearInterval(obj.timer);
+                 }
+                 else{
+                obj.style.width=obj.offsetWidth+speed+'px';}
+
+             
+                },30)
+
+            }
+         }
+
+	</script>
+</head>
+<body>
+  <ul>
+   <li></li>
+   <li></li>
+   <li></li>
+  </ul>
+</body>
+</html>
